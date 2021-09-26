@@ -108,9 +108,11 @@ class MTheme(object):
 
     def __init__(self, theme='light', primary_color=None):
         super(MTheme, self).__init__()
-        default_qss_file = utils.get_static_file('main.qss')
-        with open(default_qss_file, 'r') as f:
-            self.default_qss = QssTemplate(f.read())
+        
+        # 引入main.py qss
+        from dayu_widgets.static.main import qss
+        self.default_qss = qss
+        
         self.primary_color, self.item_hover_bg = (None, None)
         self.primary_1, self.primary_2, self.primary_3, self.primary_4, self.primary_5, \
         self.primary_6, self.primary_7, self.primary_8, self.primary_9, self.primary_10, \
